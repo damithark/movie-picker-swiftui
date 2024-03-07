@@ -12,6 +12,12 @@
 		A2CEA6592B940E070030E9BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2CEA6582B940E070030E9BA /* Assets.xcassets */; };
 		A2CEA65C2B940E070030E9BA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2CEA65B2B940E070030E9BA /* Preview Assets.xcassets */; };
 		A2CEA6672B9427CF0030E9BA /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CEA6662B9427CF0030E9BA /* HTTP.swift */; };
+		A2CEA6692B96031F0030E9BA /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CEA6682B96031F0030E9BA /* Endpoint.swift */; };
+		A2CEA66D2B9604AD0030E9BA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CEA66C2B9604AD0030E9BA /* Constants.swift */; };
+		A2CEA66F2B96051B0030E9BA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CEA66E2B96051B0030E9BA /* HomeView.swift */; };
+		A2CEA6712B96052C0030E9BA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CEA6702B96052C0030E9BA /* HomeViewModel.swift */; };
+		A2CEA6732B9605A50030E9BA /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CEA6722B9605A50030E9BA /* Movie.swift */; };
+		A2CEA6772B9608620030E9BA /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CEA6762B9608620030E9BA /* APIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +27,12 @@
 		A2CEA6582B940E070030E9BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2CEA65B2B940E070030E9BA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A2CEA6662B9427CF0030E9BA /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
+		A2CEA6682B96031F0030E9BA /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		A2CEA66C2B9604AD0030E9BA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A2CEA66E2B96051B0030E9BA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A2CEA6702B96052C0030E9BA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		A2CEA6722B9605A50030E9BA /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		A2CEA6762B9608620030E9BA /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,12 +65,12 @@
 		A2CEA6532B940E050030E9BA /* MoviePicker */ = {
 			isa = PBXGroup;
 			children = (
+				A2CEA6542B940E050030E9BA /* MoviePickerApp.swift */,
 				A2CEA6622B94275E0030E9BA /* Views */,
 				A2CEA6632B9427670030E9BA /* ViewModels */,
 				A2CEA6642B9427720030E9BA /* Models */,
 				A2CEA6652B9427820030E9BA /* API */,
-				A2CEA6542B940E050030E9BA /* MoviePickerApp.swift */,
-				A2CEA6562B940E050030E9BA /* ContentView.swift */,
+				A2CEA66A2B9603560030E9BA /* Util */,
 				A2CEA6582B940E070030E9BA /* Assets.xcassets */,
 				A2CEA65A2B940E070030E9BA /* Preview Content */,
 			);
@@ -76,6 +88,8 @@
 		A2CEA6622B94275E0030E9BA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A2CEA6562B940E050030E9BA /* ContentView.swift */,
+				A2CEA66E2B96051B0030E9BA /* HomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -83,6 +97,7 @@
 		A2CEA6632B9427670030E9BA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				A2CEA6702B96052C0030E9BA /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -90,6 +105,7 @@
 		A2CEA6642B9427720030E9BA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A2CEA6722B9605A50030E9BA /* Movie.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -98,8 +114,18 @@
 			isa = PBXGroup;
 			children = (
 				A2CEA6662B9427CF0030E9BA /* HTTP.swift */,
+				A2CEA6682B96031F0030E9BA /* Endpoint.swift */,
+				A2CEA6762B9608620030E9BA /* APIService.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		A2CEA66A2B9603560030E9BA /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				A2CEA66C2B9604AD0030E9BA /* Constants.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,8 +198,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2CEA66D2B9604AD0030E9BA /* Constants.swift in Sources */,
 				A2CEA6672B9427CF0030E9BA /* HTTP.swift in Sources */,
+				A2CEA6712B96052C0030E9BA /* HomeViewModel.swift in Sources */,
 				A2CEA6572B940E050030E9BA /* ContentView.swift in Sources */,
+				A2CEA66F2B96051B0030E9BA /* HomeView.swift in Sources */,
+				A2CEA6692B96031F0030E9BA /* Endpoint.swift in Sources */,
+				A2CEA6732B9605A50030E9BA /* Movie.swift in Sources */,
+				A2CEA6772B9608620030E9BA /* APIService.swift in Sources */,
 				A2CEA6552B940E050030E9BA /* MoviePickerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,6 +343,7 @@
 				DEVELOPMENT_TEAM = 4K9P34469L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Movie Picker";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -340,6 +373,7 @@
 				DEVELOPMENT_TEAM = 4K9P34469L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Movie Picker";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

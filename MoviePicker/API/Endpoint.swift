@@ -10,11 +10,7 @@ import Foundation
 enum Endpoint {
     
     // GET
-    case fetchPosts(url: String = "/posts")
-    case fetchOnePost(url: String = "/posts", postId: Int = 1)
-    case fetchTodos(url: String = "/todos")
-    // POST
-    case sendPost(url: String = "/posts", post: Post)
+    case getTrendingMovies(url: String = "/3/trending/movie/week")
     
     
     var request: URLRequest? {
@@ -22,6 +18,7 @@ enum Endpoint {
         var request = URLRequest(url: url)
         request.httpMethod = self.httpMethod
         request.httpBody = self.httpBody
+//        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ZWFlYjZhMmZlMDJjNjIyY2EzMDAwZTgyZjcyZDQwNyIsInN1YiI6IjY1ZTA3Yzg3ZGFmNTdjMDE4NTljMTM3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.KcSqfF-i1rot9G0XySJEV5htHBx4WIf261BtGShq_Jk", forHTTPHeaderField: "Authorization")
         request.addValues(for: self)
         return request
     }
@@ -38,10 +35,7 @@ enum Endpoint {
     
     private var path: String {
         switch self {
-        case .fetchPosts(let url): return url
-        case .fetchOnePost(let url, let postId): return "\(url)/\(postId.description)"
-        case .sendPost(let url, _): return url
-        case .fetchTodos(let url): return url
+        case .getTrendingMovies(let url): return url
         }
     }
     
@@ -55,40 +49,30 @@ enum Endpoint {
     
     private var httpMethod: String {
         switch self {
-        case .fetchPosts,
-             .fetchOnePost,
-             .fetchTodos:
+        case .getTrendingMovies:
             return HTTP.Method.get.rawValue
-        case .sendPost:
-            return HTTP.Method.post.rawValue
         }
     }
     
     private var httpBody: Data? {
         switch self {
-        case .fetchPosts,
-             .fetchOnePost,
-             .fetchTodos:
+        case .getTrendingMovies:
             return nil
-        case .sendPost(_, let post):
-            let jsonPost = try? JSONEncoder().encode(post)
-            return jsonPost
         }
     }
 }
 
 extension URLRequest {
-    
     mutating func addValues(for endpoint: Endpoint) {
         switch endpoint {
-        case .fetchPosts,
-             .fetchOnePost,
-             .fetchTodos:
-            break
-        case .sendPost:
+        case .getTrendingMovies:
             self.setValue(
                 HTTP.Headers.Value.applicationJson.rawValue,
                 forHTTPHeaderField: HTTP.Headers.Key.contentType.rawValue
+            )
+            self.setValue(
+                HTTP.Headers.Value.bearerToken.rawValue,
+                forHTTPHeaderField: HTTP.Headers.Key.authorization.rawValue
             )
         }
     }

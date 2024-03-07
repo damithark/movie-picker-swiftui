@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct Constants {
+    static let scheme = "https"
+    static let baseURL = "api.themoviedb.org"
+    static let port: Int? = nil
+}
