@@ -8,11 +8,30 @@
 import SwiftUI
 
 struct TrendingSection: View {
+    
+    var movieList: [Movie]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Text(LocalizableStrings.trendingTitle)
+                .font(.title2)
+                .fontWeight(.bold)
+                .foregroundStyle(.white)
+            Spacer()
+        }
+        .padding(.horizontal)
+        .padding(.top)
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                ForEach(movieList) { movieItem in
+                    TrendingCard(movie: movieItem)
+                }
+            }
+            .padding(.horizontal)
+        }
     }
 }
 
 #Preview {
-    TrendingSection()
+    TrendingSection(movieList: [])
 }

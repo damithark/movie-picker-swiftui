@@ -11,6 +11,7 @@ enum Endpoint {
     
     // GET
     case getTrendingMovies(url: String = "/3/trending/movie/week")
+    case searchMovies(url: String = "/3/search/movie")
     
     
     var request: URLRequest? {
@@ -18,7 +19,6 @@ enum Endpoint {
         var request = URLRequest(url: url)
         request.httpMethod = self.httpMethod
         request.httpBody = self.httpBody
-//        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ZWFlYjZhMmZlMDJjNjIyY2EzMDAwZTgyZjcyZDQwNyIsInN1YiI6IjY1ZTA3Yzg3ZGFmNTdjMDE4NTljMTM3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.KcSqfF-i1rot9G0XySJEV5htHBx4WIf261BtGShq_Jk", forHTTPHeaderField: "Authorization")
         request.addValues(for: self)
         return request
     }
@@ -36,13 +36,17 @@ enum Endpoint {
     private var path: String {
         switch self {
         case .getTrendingMovies(let url): return url
+        case .searchMovies(let url): return url
         }
     }
     
     
     private var queryItems: [URLQueryItem] {
         switch self {
-            default: return []
+        case .getTrendingMovies:
+            return []
+        case .searchMovies:
+            return [URLQueryItem(name: "query", value: "avengers"), URLQueryItem(name: "language", value: "en-US")]
         }
     }
     
@@ -51,12 +55,16 @@ enum Endpoint {
         switch self {
         case .getTrendingMovies:
             return HTTP.Method.get.rawValue
+        case .searchMovies:
+            return HTTP.Method.get.rawValue
         }
     }
     
     private var httpBody: Data? {
         switch self {
         case .getTrendingMovies:
+            return nil
+        case .searchMovies:
             return nil
         }
     }
@@ -65,7 +73,7 @@ enum Endpoint {
 extension URLRequest {
     mutating func addValues(for endpoint: Endpoint) {
         switch endpoint {
-        case .getTrendingMovies:
+        case .getTrendingMovies, .searchMovies:
             self.setValue(
                 HTTP.Headers.Value.applicationJson.rawValue,
                 forHTTPHeaderField: HTTP.Headers.Key.contentType.rawValue
