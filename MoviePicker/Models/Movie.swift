@@ -41,7 +41,12 @@ struct Movie: Codable, Identifiable {
     var fullTrendingImgUrl: URL {
         let baseUrl = URL(string: "https://image.tmdb.org/t/p/w500\(backdropPath)")
         return baseUrl!
-    } 
+    }
+    
+    var fullPosterImgUrl: URL {
+        let baseUrl = URL(string: "https://image.tmdb.org/t/p/w780\(posterPath)")
+        return baseUrl!
+    }
     
     enum CodingKeys: String, CodingKey {
         case adult

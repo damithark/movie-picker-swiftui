@@ -12,22 +12,29 @@ struct TrendingSection: View {
     var movieList: [Movie]
     
     var body: some View {
-        HStack {
-            Text(LocalizableStrings.trendingTitle)
-                .font(.title2)
-                .fontWeight(.bold)
-                .foregroundStyle(.white)
-            Spacer()
-        }
-        .padding(.horizontal)
-        .padding(.top)
-        ScrollView(.horizontal, showsIndicators: false) {
+        NavigationStack {
             HStack {
-                ForEach(movieList) { movieItem in
-                    TrendingCard(movie: movieItem)
-                }
+                Text(LocalizableStrings.trendingTitle)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.white)
+                Spacer()
             }
             .padding(.horizontal)
+            .padding(.top)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(movieList) { movieItem in
+                        NavigationLink {
+                            MovieDetailView(movie: movieItem)
+                        } label: {
+                            TrendingCard(movie: movieItem)
+                        }
+
+                    }
+                }
+                .padding(.horizontal)
+            }
         }
     }
 }

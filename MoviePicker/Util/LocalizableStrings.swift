@@ -13,4 +13,5 @@ enum LocalizableStrings {
     static let homeNavTitle = NSLocalizedString("Movie Picker", comment: "Movie Picker")
     static let trendingTitle = NSLocalizedString("Trending", comment: "Trending")
     static let searchTitle = NSLocalizedString("Search Movies", comment: "Search Movies")
+    static let aboutMovie = NSLocalizedString("About Film", comment: "About Film")
 }
